@@ -1,6 +1,7 @@
 # Checkend Homebrew tap
 
 ```sh
+brew tap checkend/tap
 brew install checkend/tap/checkend
 ```
 
