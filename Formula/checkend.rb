@@ -1,30 +1,30 @@
-# Homebrew formula for a tap (for example Checkend/homebrew-tap), made from this template with
-# scripts/homebrew-formula.sh <version> <checksums.txt>. Install: brew tap checkend/tap && brew install checkend/tap/checkend
+# Homebrew formula for Checkend/homebrew-tap, made from this template by
+# scripts/homebrew-formula.sh <version> <checksums.txt>. Install: brew install checkend/tap/checkend
 class Checkend < Formula
-  desc "Command-line interface for Checkend, open-source error tracking for coding agents"
+  desc "Command-line client for Checkend: stats, events, funnels and exports"
   homepage "https://github.com/Checkend/checkend-cli"
-  version "0.4.0"
-  license "MIT"
+  version "1.0.0"
+  license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/Checkend/checkend-cli/releases/download/v0.4.0/ce_0.4.0_darwin_arm64.tar.gz"
-      sha256 "239e7f7643d4ddf7e49916fb02384e54e83224b591db98e57873bd8a41947fb8"
+      url "https://github.com/Checkend/checkend-cli/releases/download/v1.0.0/ce_1.0.0_darwin_arm64.tar.gz"
+      sha256 "d570e62fa88bec4b26e328f9011a6ae7b04deae57ab5d859d6fde5f4debdd882"
     end
     on_intel do
-      url "https://github.com/Checkend/checkend-cli/releases/download/v0.4.0/ce_0.4.0_darwin_amd64.tar.gz"
-      sha256 "4681267cbf245866c273ea00a835db5c0abecc7c1c9a60d89c3f301adacb82ca"
+      url "https://github.com/Checkend/checkend-cli/releases/download/v1.0.0/ce_1.0.0_darwin_amd64.tar.gz"
+      sha256 "b23bc8676ef057e82e114db416369cdc8ece711d7edcf6143a4e2cd8da49c819"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Checkend/checkend-cli/releases/download/v0.4.0/ce_0.4.0_linux_arm64.tar.gz"
-      sha256 "a844c5fe694ff0c230c2f92961c5bbbc725423bb5542dd5ce5b7da980240f4d0"
+      url "https://github.com/Checkend/checkend-cli/releases/download/v1.0.0/ce_1.0.0_linux_arm64.tar.gz"
+      sha256 "7a89b072fddc190b7fbd152f79cded74c20d25c628e99dd6beb621a6494c8aed"
     end
     on_intel do
-      url "https://github.com/Checkend/checkend-cli/releases/download/v0.4.0/ce_0.4.0_linux_amd64.tar.gz"
-      sha256 "00ecb21e599c82e43a70347e79a89f6d0702a391c359a0797f1913b9c730d745"
+      url "https://github.com/Checkend/checkend-cli/releases/download/v1.0.0/ce_1.0.0_linux_amd64.tar.gz"
+      sha256 "534c967c8110653d0cd78ccd54af8df9ab651b2de0f8f784e427291b599a1c6c"
     end
   end
 
@@ -35,6 +35,6 @@ class Checkend < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/ce --version")
-    assert_match "Unknown command", shell_output("#{bin}/checkend cd 2>&1", 2)
+    assert_match "unknown command", shell_output("#{bin}/ce nosuch 2>&1", 2)
   end
 end
